@@ -121,31 +121,63 @@ Q4. The following JSON object has been provided to you in data.js:
     Write a function that console.logs each character object in the data.
 let logData = function() {
 }
-    Write a function that console.logs each character's name
-let logNames = function() {
-};
-    Write a function that console.logs each character's name and eye color
-let logNameEyes = function() {
-};
-    Write a function that console.logs each character's name whose mass is greater than 75
-let logByMass = function() {
-};
 */
+data = (require('./data'));
+var parsed = JSON.parse(data);
+
+let logData = function () {
+    for (var i = 0; i < parsed.people.length; i++) {
+        console.log(parsed.people[i])
+    }
+}
+console.log(logData())
+
+//---------------------
+let logNames = function () {
+    for (var i = 0; i < parsed.people.length; i++) {
+        console.log("logName: " + parsed.people[i].name)
+    }
+}
+
+console.log(logNames())
+
+//---------------------------------
+let logNameEyes = function () {
+    for (var i = 0; i < parsed.people.length; i++) {
+        console.log("Name: " + parsed.people[i].name +
+            ".      Eye color: " + parsed.people[i].eye_color)
+    }
+};
+console.log(logNameEyes())
+//---------------------------------
+let logByMass = function () {
+    for (var i = 0; i < parsed.people.length; i++) {
+        if (parsed.people[i].mass > 75) {
+            console.log("Name: " + parsed.people[i].name)
+        }
+    }
+};
+console.log(logByMass())
+
+//---------------------Bonus Questions:-----------------------
+
+console.log("Bonus Q1")
+let randomNumber = function(num){
+    return Math.floor(Math.random() * Math.floor(num))
+}
+console.log("Random number: " + randomNumber(5))
 
 
-/*
-**Bonus Questions:
-1. Write a function that takes in a parameter called num, and returns a random number between 0 and num. Look up documentation for Math.Random().
-Examples
-getRandomNum(6) ➞  returns a random number between 0 and 6
-getRandomNumber(10) ➞ returns a random number between 0 and 10
-2. A leap year has one day added to February for being synchronized with the seasonal year. A leap year appears with a regular frequency, which is determined by the rule below:
-The year is exactly divisible by 400, or exactly divisible by 4 and not exactly divisible by 100. Given a year you must implement a function that returns true if it's a leap year, or false if it's not.
-Examples
-isLeap(2020) ➞ true // Exactly divided by 4 and not by 100.
-isLeap(1800) ➞ false // Exactly divided by 4, but is also exactly divided by 100.
-isLeap(2000) ➞ true // Exactly divided by 400.
-isLeap(2019) ➞ false // It can't be exactly divided by 400 or by 4.
-Notes
-Exactly divided can be interpreted as the remainder of the division is equal to 0.
-*/
+//Q2:
+console.log("Bonus Q2")
+let divisible = function(num){
+    if((num % 400 == 0) || (num % 4 == 0) && !(num % 100 == 0)){
+        return true
+    }else{
+        return false
+    }
+}
+console.log("Divisible: " + divisible(2020))
+console.log("Divisible: " + divisible(1800))
+console.log("Divisible: " + divisible(2000))
+console.log("Divisible: " + divisible(2019))
